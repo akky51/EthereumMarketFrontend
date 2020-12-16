@@ -108,7 +108,7 @@ contract.methods.numItems().call().then(function (numItems) {
 
 // 商品画像を表示する
 function showImage(idx) {
-  contract.methods.images(idx).call().then(function (image) {
+  contract.methods.requestInfo(idx).call().then(function (image) {
       // imageUrl = "https://ipfs.io/ipfs/" + image.ipfsHash; // ipfsを使用する場合
       imageUrl =
         "http://drive.google.com/uc?export=view&id=" + image.googleDocID; // googleDriveを使用する場合
@@ -148,7 +148,7 @@ function showDescription(idx) {
   ];
   itemIdxList = [3, 5, 4, 11, 2, 0, 1]; // keyに対応するインデックス
 
-  contract.methods.items(idx).call().then(function (item) {
+  contract.methods.requestInfo(idx).call().then(function (item) {
       for (var i = 0; i < itemIdxList.length; i++) {
         var elem = document.createElement("p");
         // 依頼状況のみ，true⇒募集中止，false⇒募集中に表示を変更する
@@ -171,7 +171,7 @@ function showState(idx) {
   stateKeyList = ["請負", "実行", "送金", "依頼者評価", "請負人評価"];
   stateIdxList = [6, 7, 8, 9, 10]; // keyに対応するインデックス
 
-  contract.methods.items(idx).call().then(function (item) {
+  contract.methods.requestInfo(idx).call().then(function (item) {
       for (var i = 0; i < stateIdxList.length; i++) {
         var elem = document.createElement("p");
         if (item[stateIdxList[i]] == true) {
@@ -191,7 +191,7 @@ function setButton(idx) {
     .items(idx)
     .call()
     .then(function (item) {
-      reward = item[5]; // 商品価格を取得する
+      reward = requestInfo[5]; // 商品価格を取得する
     }).then(function () {
       document
         .getElementById("receiveRequest" + idx)
