@@ -226,7 +226,7 @@ function finishRequest(idx) {
 }
 
 // 実行確認を連絡する関数
-function setFinish(idx) {
+function setFinish(idx,reward) {
   return contract.methods.setFinish(idx).send({ from: coinbase, value: reward });
 }
 
