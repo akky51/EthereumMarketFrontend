@@ -114,7 +114,7 @@ function showImage(idx) {
   contract.methods.images(idx).call().then(function (image) {
       // imageUrl = "https://ipfs.io/ipfs/" + image.ipfsHash; // ipfsを使用する場合
       imageUrl =
-        "http://drive.google.com/uc?export=view&id=" + image.googleDocID; // googleDriveを使用する場合
+        "https://drive.google.com/file/d/" + image.googleDocID + "/view"; // googleDriveを使用する場合
 
       // 生成する要素と属性
       var image = document.createElement("img");
