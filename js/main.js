@@ -247,4 +247,3 @@ function reputate2(idx) {
     .reputate2(idx, sellerValue)
     .send({ from: coinbase });
 }
-// 11/26 確認済
