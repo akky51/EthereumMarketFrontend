@@ -100,8 +100,7 @@ contract.methods
     }
 
     // 3.DOMに商品情報を入れる。ボタンに関数を登録する。
-  })
-  .then(function () {
+  }).then(function () {
     for (idx = 0; idx < _numItems; idx++) {
       showImage(idx); // 商品画像
       showDescription(idx); // 商品説明
