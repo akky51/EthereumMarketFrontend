@@ -203,9 +203,9 @@ function setButton(idx) {
       document
         .getElementById("finishRequest" + idx)
         .setAttribute("onclick", "finishRequest(" + idx + ");");
-      document
+     document
         .getElementById("setFinish" + idx)
-        .setAttribute("onclick", "setFinish(" + idx + ");");
+        .setAttribute("onclick", "setFinish(" + idx + "," + reward + ");");
       document
         .getElementById("sellerEvaluate" + idx)
         .setAttribute("onclick", "sellerEvaluate(" + idx + ");");
