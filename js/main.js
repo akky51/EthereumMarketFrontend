@@ -197,15 +197,15 @@ function setButton(idx) {
       reward = requestInfo[5]; // 商品価格を取得する
     })
     .then(function () {
-      document
+     document
         .getElementById("receiveRequest" + idx)
         .setAttribute("onclick", "receiveRequest(" + idx + ");");
       document
-        .getElementById("finishRequest" + idx)
-        .setAttribute("onclick", "finishRequest(" + idx + ");");
-     document
         .getElementById("setFinish" + idx)
-        .setAttribute("onclick", "setFinish(" + idx + "," + reward + ");");
+        .setAttribute("onclick", "setFinish(" + idx + ");");
+      document
+        .getElementById("finishRequest" + idx)
+        .setAttribute("onclick", "finishRequest(" + idx + "," + reward + ");");
       document
         .getElementById("sellerEvaluate" + idx)
         .setAttribute("onclick", "sellerEvaluate(" + idx + ");");
@@ -221,12 +221,12 @@ function receiveRequest(idx) {
 }
 
 // 依頼実行を連絡する関数
-function finishRequest(idx) {
+function setFinish(idx) {
   return contract.methods.finishRequest(idx).send({ from: coinbase });
 }
 
 // 実行確認を連絡する関数
-function setFinish(idx,reward) {
+function finishRequest(idx,reward) {
   return contract.methods.setFinish(idx).send({ from: coinbase, value: reward });
 }
 
