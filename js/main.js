@@ -2,7 +2,10 @@ var _numItems; // 出品されている商品数
 var col = 3; // 商品一覧を表示する際の列数
 
 // 1.出品されている商品数を取得する
-contract.methods.numItems().call().then(function (numItems) {
+contract.methods
+  .numItems()
+  .call()
+  .then(function (numItems) {
     _numItems = numItems;
 
     // 2.商品情報を表示するDOMや取引を進めるためのボタンを配置する。
@@ -97,7 +100,8 @@ contract.methods.numItems().call().then(function (numItems) {
     }
 
     // 3.DOMに商品情報を入れる。ボタンに関数を登録する。
-  }).then(function () {
+  })
+  .then(function () {
     for (idx = 0; idx < _numItems; idx++) {
       showImage(idx); // 商品画像
       showDescription(idx); // 商品説明
@@ -108,7 +112,7 @@ contract.methods.numItems().call().then(function (numItems) {
 
 // 商品画像を表示する
 function showImage(idx) {
-  contract.methods.requestInfo(idx).call().then(function (image) {
+  contract.methods.images(idx).call().then(function (image) {
       // imageUrl = "https://ipfs.io/ipfs/" + image.ipfsHash; // ipfsを使用する場合
       imageUrl =
         "http://drive.google.com/uc?export=view&id=" + image.googleDocID; // googleDriveを使用する場合
@@ -148,18 +152,18 @@ function showDescription(idx) {
   ];
   itemIdxList = [3, 5, 4, 11, 2, 0, 1]; // keyに対応するインデックス
 
-  contract.methods.requestInfo(idx).call().then(function (item) {
+  contract.methods.requestInfos(idx).call().then(function (requestInfo) {
       for (var i = 0; i < itemIdxList.length; i++) {
         var elem = document.createElement("p");
         // 依頼状況のみ，true⇒募集中止，false⇒募集中に表示を変更する
         if (i == 3) {
-          if (item[itemIdxList[i]] == true) {
+          if (requestInfo[itemIdxList[i]] == true) {
             elem.textContent = itemKeyList[i] + " : 募集中止";
           } else {
             elem.textContent = itemKeyList[i] + " : 募集中";
           }
         } else {
-          elem.textContent = itemKeyList[i] + " : " + item[itemIdxList[i]];
+          elem.textContent = itemKeyList[i] + " : " + requestInfo[itemIdxList[i]];
         }
         document.getElementById("description" + idx).appendChild(elem);
       }
@@ -171,10 +175,10 @@ function showState(idx) {
   stateKeyList = ["請負", "実行", "送金", "依頼者評価", "請負人評価"];
   stateIdxList = [6, 7, 8, 9, 10]; // keyに対応するインデックス
 
-  contract.methods.requestInfo(idx).call().then(function (item) {
+  contract.methods.requestInfos(idx).call().then(function (requestInfo) {
       for (var i = 0; i < stateIdxList.length; i++) {
         var elem = document.createElement("p");
-        if (item[stateIdxList[i]] == true) {
+        if (requestInfo[stateIdxList[i]] == true) {
           elem.textContent = stateKeyList[i] + " : 済み";
         } else {
           elem.textContent = stateKeyList[i] + " : 完了していません";
@@ -188,11 +192,12 @@ function showState(idx) {
 function setButton(idx) {
   var reward;
   contract.methods
-    .items(idx)
+    .requestInfos(idx)
     .call()
-    .then(function (item) {
+    .then(function (requestInfo) {
       reward = requestInfo[5]; // 商品価格を取得する
-    }).then(function () {
+    })
+    .then(function () {
       document
         .getElementById("receiveRequest" + idx)
         .setAttribute("onclick", "receiveRequest(" + idx + "," + reward + ");");
