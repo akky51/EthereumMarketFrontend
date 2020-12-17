@@ -200,6 +200,7 @@ function setButton(idx) {
      document
         .getElementById("receiveRequest" + idx)
         .setAttribute("onclick", "receiveRequest(" + idx + ");");
+    //ここ
       document
         .getElementById("setFinish" + idx)
         .setAttribute("onclick", "setFinish(" + idx + ");");
