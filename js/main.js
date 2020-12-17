@@ -221,13 +221,13 @@ function receiveRequest(idx) {
 }
 
 // 依頼実行を連絡する関数
-function setFinish(idx) {
-  return contract.methods.setFinish(idx).send({ from: coinbase });
+function finishRequest(idx) {
+  return contract.methods.finishRequest(idx).send({ from: coinbase });
 }
 
 // 実行確認を連絡する関数
-function finishRequest(idx, reward) {
-  return contract.methods.finishRequest(idx).send({ from: coinbase, value: reward });
+function setFinish(idx) {
+  return contract.methods.setFinish(idx).send({ from: coinbase, value: reward });
 }
 
 // 依頼者を評価する関数
