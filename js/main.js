@@ -202,7 +202,7 @@ function setButton(idx) {
         .setAttribute("onclick", "receiveRequest(" + idx + ");");
       document
         .getElementById("setFinish" + idx)
-        .setAttrobute("onclick", "setFinish(" + idx + ");");
+        .setAttribute("onclick", "setFinish(" + idx + ");");
       document
         .getElementById("finishRequest" + idx)
         .setAttribute("onclick", "finishRequest(" + idx + "," + reward + ");");
