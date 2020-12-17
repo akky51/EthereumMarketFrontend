@@ -199,7 +199,7 @@ function setButton(idx) {
     .then(function () {
       document
         .getElementById("receiveRequest" + idx)
-        .setAttribute("onclick", "receiveRequest(" + idx + "," + reward + ");");
+        .setAttribute("onclick", "receiveRequest(" + idx + ");");
       document
         .getElementById("finishRequest" + idx)
         .setAttribute("onclick", "finishRequest(" + idx + ");");
