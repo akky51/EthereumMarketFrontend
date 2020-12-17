@@ -197,21 +197,11 @@ function setButton(idx) {
       reward = requestInfo[5]; // 商品価格を取得する
     })
     .then(function () {
-     document
-        .getElementById("receiveRequest" + idx)
-        .setAttribute("onclick", "receiveRequest(" + idx + ");");
-      document
-        .getElementById("setFinish" + idx)
-        .setAttribute("onclick", "setFinish(" + idx + ");");
-      document
-        .getElementById("finishRequest" + idx)
-        .setAttribute("onclick", "finishRequest(" + idx + "," + reward + ");");
-      document
-        .getElementById("sellerEvaluate" + idx)
-        .setAttribute("onclick", "sellerEvaluate(" + idx + ");");
-      document
-        .getElementById("buyerEvaluate" + idx)
-        .setAttribute("onclick", "buyerEvaluate(" + idx + ");");
+    document.getElementById("receiveRequest" + idx).setAttribute("onclick", "receiveRequest(" + idx + ");");
+      document.getElementById("setFinish" + idx).setAttribute("onclick", "setFinish(" + idx + ");");
+      document.getElementById("finishRequest" + idx).setAttribute("onclick", "finishRequest(" + idx + "," + reward + ");");
+      document.getElementById("sellerEvaluate" + idx).setAttribute("onclick", "sellerEvaluate(" + idx + ");");
+      document.getElementById("buyerEvaluate" + idx).setAttribute("onclick", "buyerEvaluate(" + idx + ");");
     });
 }
 
