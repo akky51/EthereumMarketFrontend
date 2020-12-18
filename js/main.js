@@ -224,16 +224,12 @@ function finishRequest(idx,reward) {
 function reputate1(idx) {
   var buyerValue = document.getElementById("value" + idx).value;
 
-  return contract.methods
-    .reputate1(idx, buyerValue)
-    .send({ from: coinbase });
+  return contract.methods.reputate1(idx, buyerValue).send({ from: coinbase });
 }
 
 // 請負人を評価する関数
 function reputate2(idx) {
   var sellerValue = document.getElementById("value" + idx).value;
 
-  return contract.methods
-    .reputate2(idx, sellerValue)
-    .send({ from: coinbase });
+  return contract.methods.reputate2(idx, sellerValue).send({ from: coinbase });
 }
