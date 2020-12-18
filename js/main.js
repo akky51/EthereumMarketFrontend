@@ -19,8 +19,8 @@ contract.methods
     // 取引を進めるボタンのIDとボタンに表示するテキスト
     var buttonId = [
       "receiveRequest",
-      "completion",
-      "confirmation",
+      "setFinish",
+      "finishRequest",
       "sellerEvaluate",
       "buyerEvaluate",
     ];
