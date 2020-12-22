@@ -21,8 +21,8 @@ contract.methods
       "receiveRequest",
       "setFinish",
       "finishRequest",
-      "sellerEvaluate",
-      "buyerEvaluate",
+      "reputate1",
+      "reputate2",
     ];
     var buttonText = [
       "この依頼を承諾",
@@ -200,8 +200,8 @@ function setButton(idx) {
     document.getElementById("receiveRequest" + idx).setAttribute("onclick", "receiveRequest(" + idx + ");");
       document.getElementById("setFinish" + idx).setAttribute("onclick", "setFinish(" + idx + ");");
       document.getElementById("finishRequest" + idx).setAttribute("onclick", "finishRequest(" + idx + "," + reward + ");");
-      document.getElementById("sellerEvaluate" + idx).setAttribute("onclick", "sellerEvaluate(" + idx + ");");
-      document.getElementById("buyerEvaluate" + idx).setAttribute("onclick", "buyerEvaluate(" + idx + ");");
+      document.getElementById("reputate1" + idx).setAttribute("onclick", "reputate1(" + idx + ");");
+      document.getElementById("reputate2" + idx).setAttribute("onclick", "reputate2(" + idx + ");");
     });
 }
 
