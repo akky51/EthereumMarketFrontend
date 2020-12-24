@@ -25,9 +25,9 @@ contract.methods
       "reputate2",
     ];
     var buttonText = [
-      "この依頼を承諾",
+      "この依頼を請け負う",
       "実行完了通知",
-      "確認完了通知",
+      "完了確認通知",
       "依頼者を評価",
       "購入者を評価",
     ];
@@ -71,7 +71,7 @@ contract.methods
           var form = document.createElement("div");
           form.setAttribute("class", "form-group");
           var label = document.createElement("label");
-          label.textContent = "出品者または購入者の評価を選択して下さい";
+          label.textContent = "依頼者または請負人の評価を選択して下さい";
           label.setAttribute("for", "value" + idx);
           var select = document.createElement("select");
           select.setAttribute("multiple", "");
@@ -102,8 +102,8 @@ contract.methods
     // 3.DOMに商品情報を入れる。ボタンに関数を登録する。
   }).then(function () {
     for (idx = 0; idx < _numItems; idx++) {
-      showImage(idx); // 商品画像
-      showDescription(idx); // 商品説明
+      showImage(idx); // 依頼画像
+      showDescription(idx); // 依頼説明
       showState(idx); // 取引状態
       setButton(idx); // 取引を進めるボタンに関数を登録する
     }
@@ -157,7 +157,7 @@ function showDescription(idx) {
         // 依頼状況のみ，true⇒募集中止，false⇒募集中に表示を変更する
         if (i == 3) {
           if (requestInfo[itemIdxList[i]] == true) {
-            elem.textContent = itemKeyList[i] + " : 募集中止";
+            elem.textContent = itemKeyList[i] + " : 募集終了";
           } else {
             elem.textContent = itemKeyList[i] + " : 募集中";
           }
@@ -171,16 +171,16 @@ function showDescription(idx) {
 
 // 取引の状態を表示する
 function showState(idx) {
-  stateKeyList = ["請負", "実行", "送金", "依頼者評価", "請負人評価"];
+  stateKeyList = ["請負", "実行", "確認（送金）", "依頼者評価", "請負人評価"];
   stateIdxList = [6, 7, 8, 9, 10]; // keyに対応するインデックス
 
   contract.methods.requestInfos(idx).call().then(function (requestInfo) {
       for (var i = 0; i < stateIdxList.length; i++) {
         var elem = document.createElement("p");
         if (requestInfo[stateIdxList[i]] == true) {
-          elem.textContent = stateKeyList[i] + " : 済み";
+          elem.textContent = stateKeyList[i] + " : 完了";
         } else {
-          elem.textContent = stateKeyList[i] + " : 完了していません";
+          elem.textContent = stateKeyList[i] + " : 未完了";
         }
         document.getElementById("state" + idx).appendChild(elem);
       }
