@@ -168,6 +168,8 @@ function showDescription(idx) {
   itemIdxList = [3, 5, 4, 11, 2, 0, 1]; // keyに対応するインデックス
 
   contract.methods.requestInfos(idx).call().then(function (requestInfo) {
+     var elem = document.createElement("p");
+      elem.textContent = " 質問番号: " + (idx + 1);
       for (var i = 0; i < itemIdxList.length; i++) {
         var elem = document.createElement("p");
         // 依頼状況のみ，true⇒募集中止，false⇒募集中に表示を変更する
