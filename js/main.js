@@ -170,6 +170,7 @@ function showDescription(idx) {
   contract.methods.requestInfos(idx).call().then(function (requestInfo) {
      var elem = document.createElement("p");
       elem.textContent = " 質問番号: " + (idx + 1);
+    document.getElementById("description" + idx).appendChild(elem);
       for (var i = 0; i < itemIdxList.length; i++) {
         var elem = document.createElement("p");
         // 依頼状況のみ，true⇒募集中止，false⇒募集中に表示を変更する
