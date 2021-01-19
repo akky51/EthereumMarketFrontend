@@ -25,17 +25,17 @@ contract.methods
       "reputate2",
     ];
     var buttonText = [
-     /*
+     
      "この依頼を請け負う",
       "実行完了通知",
       "完了確認通知",
       "依頼者を評価",
-      "購入者を評価",*/
-      "この質問に回答する",
-      "回答完了",
-      "回答確認",
-      "質問者を評価",
-      "回答者を評価",
+      "購入者を評価",
+//       "この質問に回答する",
+//       "回答完了",
+//       "回答確認",
+//       "質問者を評価",
+//       "回答者を評価",
       
     ];
     //ここまで確認完了 11/3
@@ -148,7 +148,7 @@ function showImage(idx) {
 // 商品情報を表示する
 function showDescription(idx) {
   itemKeyList = [
-    /*
+    
     "依頼名",
     "報酬(wei)",
     "依頼内容",
@@ -156,20 +156,20 @@ function showDescription(idx) {
     "依頼者",
     "依頼者のアドレス",
     "請負人のアドレス",
-    */
-    "質問題名",
-    "報酬(wei)",
-    "質問内容",
-    "状況",
-    "質問者",
-    "質問者のアドレス",
-    "回答者のアドレス",
+    
+//     "質問題名",
+//     "報酬(wei)",
+//     "質問内容",
+//     "状況",
+//     "質問者",
+//     "質問者のアドレス",
+//     "回答者のアドレス",
   ];
   itemIdxList = [3, 5, 4, 11, 2, 0, 1]; // keyに対応するインデックス
 
   contract.methods.requestInfos(idx).call().then(function (requestInfo) {
      var elem = document.createElement("p");
-      elem.textContent = " 質問番号: " + (idx + 1);
+      elem.textContent = " 依頼番号: " + (idx + 1);
     document.getElementById("description" + idx).appendChild(elem);
       for (var i = 0; i < itemIdxList.length; i++) {
         var elem = document.createElement("p");
@@ -190,7 +190,7 @@ function showDescription(idx) {
 
 // 取引の状態を表示する
 function showState(idx) {
-  stateKeyList = ["請負", "回答", "確認（送金）", "質問者評価", "回答者評価"];
+  stateKeyList = ["請負", "実行完了", "確認（送金）", "依頼人評価", "請負人評価"];
   stateIdxList = [6, 7, 8, 9, 10]; // keyに対応するインデックス
 
   contract.methods.requestInfos(idx).call().then(function (requestInfo) {
