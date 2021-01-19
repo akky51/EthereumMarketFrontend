@@ -29,8 +29,8 @@ contract.methods
      "この依頼を請け負う",
       "実行完了通知",
       "完了確認通知",
-      "依頼者を評価",
-      "購入者を評価",
+      "依頼人を評価",
+      "購入人を評価",
 //       "この質問に回答する",
 //       "回答完了",
 //       "回答確認",
@@ -78,7 +78,7 @@ contract.methods
           var form = document.createElement("div");
           form.setAttribute("class", "form-group");
           var label = document.createElement("label");
-          label.textContent = "依頼者または請負人の評価を選択して下さい";
+          label.textContent = "依頼人または請負人の評価を選択して下さい";
           label.setAttribute("for", "value" + idx);
           var select = document.createElement("select");
           select.setAttribute("multiple", "");
@@ -153,8 +153,8 @@ function showDescription(idx) {
     "報酬(wei)",
     "依頼内容",
     "依頼状況",
-    "依頼者",
-    "依頼者のアドレス",
+    "依頼人",
+    "依頼人のアドレス",
     "請負人のアドレス",
     
 //     "質問題名",
@@ -239,7 +239,7 @@ function finishRequest(idx,reward) {
   return contract.methods.finishRequest(idx).send({ from: coinbase, value: reward });
 }
 
-// 依頼者を評価する関数
+// 依頼人を評価する関数
 function reputate1(idx) {
   var buyerValue = document.getElementById("value" + idx).value;
 
